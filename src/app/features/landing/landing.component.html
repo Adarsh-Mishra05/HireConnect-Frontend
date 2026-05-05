@@ -1,0 +1,352 @@
+<div class="landing-container">
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <span class="brand-text">HireConnect</span>
+      </div>
+      
+      <nav class="nav-links">
+        <a (click)="goToJobs()" class="nav-link" style="cursor: pointer;">Jobs</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-outline">Sign In</a>
+        <a *ngIf="!isLoggedIn" routerLink="/register" class="btn btn-primary">Get Started</a>
+        <a *ngIf="isLoggedIn" class="btn btn-primary" (click)="goToStart()">Go to Dashboard</a>
+        <a routerLink="/admin/login" class="btn btn-admin">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+          </svg>
+          Admin
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Jobs -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-text">Trusted by 1000+ Companies</span>
+        </div>
+        <h1 class="hero-title">
+          Find Your Perfect <span class="gradient-text">Dream Job</span><br>
+          <span style="font-size: 2.5rem; color: #f59e0b;">Browse Without Login</span>
+        </h1>
+        <p class="hero-description">
+          Connect talented professionals with top companies. Streamlined hiring process, 
+          intelligent matching, and comprehensive recruitment solutions.
+        </p>
+        
+        <div class="hero-image">
+          <img src="https://decisionwise.com/wp-content/uploads/2021/04/AdobeStock_243103938-scaled.jpeg" 
+               alt="Professional employee" 
+               class="employee-image" />
+        </div>
+        
+        <div class="hero-actions">
+          <div class="action-group">
+            <h3>I'm looking for a job</h3>
+            <a class="btn btn-primary btn-large" (click)="goToJobs()">View Jobs</a>
+          </div>
+          
+          <div class="divider">OR</div>
+          
+          <div class="action-group">
+            <h3>I'm looking for talent</h3>
+            <a class="btn btn-secondary btn-large" (click)="goToStart()">Post a Job</a>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Active Jobs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">200K+</div>
+            <div class="stat-label">Job Seekers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5K+</div>
+            <div class="stat-label">Companies</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="card-header">
+            <div class="card-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="card-title">Job Matches</div>
+          </div>
+          <div class="card-content">
+            <div class="match-item">
+              <div class="match-avatar">JD</div>
+              <div class="match-info">
+                <div class="match-title">Senior Developer</div>
+                <div class="match-company">Tech Corp</div>
+              </div>
+              <div class="match-score">95%</div>
+            </div>
+            <div class="match-item">
+              <div class="match-avatar">MK</div>
+              <div class="match-info">
+                <div class="match-title">Product Manager</div>
+                <div class="match-company">StartupXYZ</div>
+              </div>
+              <div class="match-score">88%</div>
+            </div>
+            <div class="match-item">
+              <div class="match-avatar">AS</div>
+              <div class="match-info">
+                <div class="match-title">UX Designer</div>
+                <div class="match-company">DesignHub</div>
+              </div>
+              <div class="match-score">92%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">How HireConnect Works</h2>
+        <p class="section-description">Get started in minutes with our simple 3-step process</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <h3>Create Your Profile</h3>
+            <p>Sign up and build your comprehensive profile with skills, experience, and preferences.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2m0 4v2a2 2 0 0 0-2h-2m0 4v2a2 2 0 0 0 2h2m-6 6h18"/>
+              <circle cx="6" cy="6" r="2"/>
+              <circle cx="18" cy="18" r="2"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <h3>Get Matched</h3>
+            <p>Our AI algorithm matches you with the best opportunities or candidates based on your requirements.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            </svg>
+          </div>
+          <div class="step-content">
+            <h3>Connect & Hire</h3>
+            <p>Connect with potential employers or candidates, schedule interviews, and complete the hiring process.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">About HireConnect</h2>
+        <p class="section-description">Revolutionizing the job search and recruitment experience</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-main">
+          <div class="about-text">
+            <h3>Empowering Careers and Transforming Recruitment</h3>
+            <p>
+              HireConnect is a cutting-edge job portal platform that bridges the gap between talented professionals and forward-thinking companies. Our intelligent matching algorithm ensures that job seekers find their dream roles while employers discover the perfect candidates for their teams.
+            </p>
+            <p>
+              With over 50,000+ active job listings and 200,000+ registered job seekers, we've become the trusted platform for career growth and talent acquisition across industries.
+            </p>
+          </div>
+          
+          <div class="about-stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h4>50K+ Jobs</h4>
+                <p>Active opportunities across various industries and experience levels</p>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h4>200K+ Seekers</h4>
+                <p>Talented professionals actively seeking their next career move</p>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <h4>95% Success Rate</h4>
+                <p>Successful matches leading to long-term career placements</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-features">
+          <h3>Why Choose HireConnect?</h3>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-check">AI-Powered Matching</div>
+              <p>Our advanced algorithm analyzes skills, experience, and preferences to create perfect matches</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">Real-Time Updates</div>
+              <p>Get instant notifications for new job opportunities and application status updates</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">Secure Platform</div>
+              <p>Your data and privacy are protected with enterprise-grade security measures</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">Career Resources</div>
+              <p>Access resume builders, interview tips, and professional development tools</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">Mobile Friendly</div>
+              <p>Apply and manage your job search on-the-go with our responsive mobile experience</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">Expert Support</div>
+              <p>Get help from our career coaches and recruitment specialists</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-container">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Hiring Experience?</h2>
+        <p>Join thousands of companies and job seekers who have found their perfect match through HireConnect.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-large" (click)="goToStart()">Get Started Free</a>
+          <a class="btn btn-outline btn-large" (click)="goToJobs()">Browse Jobs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-brand">
+            <div class="brand-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <span class="brand-text">HireConnect</span>
+          </div>
+          <p class="footer-description">
+            Connecting talent with opportunity through intelligent matching and streamlined recruitment.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>For Job Seekers</h4>
+          <ul>
+            <li><a routerLink="/explore">Browse Jobs</a></li>
+            <li><a href="/register">Create Profile</a></li>
+            <li><a href="#">Career Advice</a></li>
+            <li><a href="#">Interview Tips</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>For Employers</h4>
+          <ul>
+            <li><a href="/register">Post Jobs</a></li>
+            <li><a href="#">Talent Search</a></li>
+            <li><a href="#">Recruitment Solutions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">API Documentation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 HireConnect. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>

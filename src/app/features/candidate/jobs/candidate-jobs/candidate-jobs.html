@@ -1,0 +1,147 @@
+<div class="jobs-page">
+
+  <!-- Simple Hero Section -->
+  <section class="hero-simple">
+    <div class="hero-content-simple">
+      <h1>Find Your Next Job</h1>
+      <p>Browse {{ jobs.length }} open positions from top companies</p>
+      <div class="hero-stats-simple">
+        <span><strong>{{ jobs.length }}</strong> Jobs</span>
+        <span class="stat-separator">|</span>
+        <span><strong>{{ filteredJobs.length }}</strong> Matching</span>
+        <span class="stat-separator">|</span>
+        <span><strong>500+</strong> Companies</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simple Search & Filter -->
+  <section class="search-simple">
+    <div class="search-box-simple">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="applyFilters()"
+        placeholder="Search by title, company, or location..."
+      />
+      <button *ngIf="searchTerm" class="clear-btn-simple" type="button" (click)="clearSearch()">Clear</button>
+    </div>
+
+    <div class="filter-pills">
+      <button type="button" class="pill" [class.pill-active]="activeFilter === 'ALL'" (click)="setFilter('ALL')">All Jobs</button>
+      <button type="button" class="pill" [class.pill-active]="activeFilter === 'NOT_APPLIED'" (click)="setFilter('NOT_APPLIED')">Not Applied</button>
+      <button type="button" class="pill" [class.pill-active]="activeFilter === 'APPLIED'" [disabled]="isGuest" (click)="setFilter('APPLIED')">Applied</button>
+      <button type="button" class="pill" [class.pill-active]="activeFilter === 'SAVED'" [disabled]="isGuest" (click)="setFilter('SAVED')">Saved</button>
+    </div>
+  </section>
+
+  <!-- ── Results Count ─────────────────────────────── -->
+  <div class="results-info" *ngIf="!isLoading && filteredJobs.length > 0">
+    <strong>{{ filteredJobs.length }}</strong> job{{ filteredJobs.length !== 1 ? 's' : '' }} found
+  </div>
+
+  <!-- ── Loading ───────────────────────────────────── -->
+  <div class="state-card" *ngIf="isLoading">
+    <div class="state-spinner"></div>
+    <p>Loading jobs...</p>
+  </div>
+
+  <!-- ── Error ─────────────────────────────────────── -->
+  <div class="alert-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- ── Empty ─────────────────────────────────────── -->
+  <div class="state-card" *ngIf="!isLoading && filteredJobs.length === 0">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round">
+      <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+    </svg>
+    <h3>No jobs found</h3>
+    <p>Try a different search term or adjust the filter.</p>
+  </div>
+
+  <!-- Simple Job List -->
+  <section class="jobs-list" *ngIf="!isLoading && filteredJobs.length > 0">
+    <div class="list-header">
+      <h2>Available Jobs</h2>
+      <span class="count">{{ filteredJobs.length }} found</span>
+    </div>
+
+    <div class="job-cards">
+      <article class="job-card-simple" *ngFor="let job of filteredJobs" [class.featured-simple]="job.isFeatured">
+        
+        <!-- Badges -->
+        <div class="badge-featured" *ngIf="job.isFeatured">Featured</div>
+        <div class="badge-applied" *ngIf="isApplied(job.jobId)">Applied</div>
+
+        <div class="card-main">
+          <!-- Company Logo -->
+          <div class="logo-simple">
+            {{ job.companyName?.charAt(0)?.toUpperCase() || 'C' }}
+          </div>
+
+          <!-- Job Info -->
+          <div class="info-simple">
+            <h3 class="title-simple">{{ job.title }}</h3>
+            <p class="company-simple">{{ job.companyName }}</p>
+            
+            <div class="meta-simple">
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                {{ job.location }}
+              </span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2"/>
+                </svg>
+                {{ job.jobType }}
+              </span>
+              <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                </svg>
+                {{ job.experienceLevel }}
+              </span>
+            </div>
+
+            <p class="desc-simple">{{ job.description }}</p>
+
+            <div class="skills-simple" *ngIf="job.skillsRequired">
+              <span class="skill-tag" *ngFor="let skill of job.skillsRequired.split(',').slice(0,3)">{{ skill.trim() }}</span>
+            </div>
+          </div>
+
+          <!-- Right Side -->
+          <div class="right-simple">
+            <div class="salary-simple">{{ formatSalary(job) }}</div>
+            <div class="status-simple" [class.status-applied-simple]="isApplied(job.jobId)">{{ isApplied(job.jobId) ? 'Applied' : job.status }}</div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-simple">
+          <a [routerLink]="['/jobs', job.jobId]" class="btn-view-simple">View Details</a>
+          <button class="btn-save-simple" type="button" (click)="toggleSave(job.jobId)" [class.saved-simple]="isSaved(job.jobId)">
+            {{ isSaved(job.jobId) ? 'Saved' : 'Save' }}
+          </button>
+          <button 
+            class="btn-apply-simple" 
+            type="button" 
+            (click)="applyToJob(job.jobId)"
+            [disabled]="isApplied(job.jobId) || isApplying(job.jobId)"
+            [class.applied-simple]="isApplied(job.jobId)"
+          >
+            {{ isApplying(job.jobId) ? 'Applying...' : isApplied(job.jobId) ? 'Applied' : 'Apply Now' }}
+          </button>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+</div>
