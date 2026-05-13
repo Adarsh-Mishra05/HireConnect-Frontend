@@ -1,24 +1,19 @@
+<!-- [Adarsh Mishra]: Added READ.md file -->
 # HireConnect — Frontend Platform
 
-> *Bridging talent and opportunity at scale.*
+HireConnect is a state-of-the-art recruitment platform designed to bridge the gap between talented candidates and top-tier recruiters. This repository contains the professional, high-performance Angular frontend for the HireConnect ecosystem.
 
----
+## 🚀 Overview
 
-## What is HireConnect?
+The frontend is meticulously crafted with a focus on user experience, inspired by industry leaders like Naukri.com. It provides dedicated dashboards and workflows for both recruiters and candidates, ensuring a streamlined hiring process from job posting to interview scheduling.
 
-HireConnect is a modern recruitment platform that connects ambitious candidates with top-tier recruiters. This repository holds the Angular frontend — fast, accessible, and built with the same intentionality you'd expect from a production-grade hiring product.
-
-Inspired by platforms like Naukri.com, HireConnect goes further: purpose-built dashboards, real-time notifications, and a clean separation of recruiter and candidate workflows.
-
----
-
-## Architecture at a Glance
+## 🏗️ Architecture
 
 ```mermaid
 graph TD
     User((User)) --> Gateway[API Gateway :8080]
-
-    subgraph "Frontend Layer — Angular"
+    
+    subgraph "Frontend Layer (Angular)"
         App[App Root]
         Auth[Auth Module]
         Recruiter[Recruiter Dashboard]
@@ -35,112 +30,71 @@ graph TD
     Shared -.-> Candidate
 ```
 
----
+## 🛠️ Technology Stack
 
-## Tech Stack
+- **Core Framework**: Angular 17+ (Standalone Components)
+- **State Management**: RxJS (Observables & Subjects)
+- **Styling**: Vanilla CSS3 (Custom Design System with Variables)
+- **Networking**: HttpClient with JWT Interceptors
+- **Integrations**: Razorpay Payment Gateway, Google OAuth2
 
-| Layer | Choice |
-|---|---|
-| Framework | Angular 17+ (Standalone Components) |
-| State | RxJS — Observables & Subjects |
-| Styling | Vanilla CSS3 with custom design tokens |
-| Networking | HttpClient + JWT Interceptors |
-| Payments | Razorpay Gateway |
-| Auth | Google OAuth2 |
+## ✨ Key Features
 
----
+### For Recruiters
+- **Job Lifecycle Management**: Create, update, and manage job postings with ease.
+- **Application Tracking**: Review candidate applications and download resumes securely.
+- **Interview Scheduling**: Intuitive interface for scheduling interviews across different modes.
+- **Featured Jobs**: Boost job visibility through integrated payment processing.
 
-## Features
+### For Candidates
+- **Smart Job Search**: Advanced filtering by location, salary, job type, and skills.
+- **One-Click Application**: Streamlined application process for tracked jobs.
+- **Professional Profile**: Comprehensive profile builder including resume management.
+- **Real-time Notifications**: Stay updated on application status and interview alerts.
 
-### Recruiter Side
-- **Job Lifecycle** — post, edit, close, and track listings in one place
-- **Application Review** — browse applicants, download resumes
-- **Interview Scheduling** — set up sessions across in-person, phone, or video
-- **Featured Listings** — pay to promote jobs via Razorpay integration
-
-### Candidate Side
-- **Smart Search** — filter by location, salary range, job type, and skills
-- **One-Click Apply** — frictionless applications for tracked roles
-- **Profile Builder** — resume upload, skills, experience — all in one view
-- **Live Notifications** — application status updates and interview alerts
-
----
-
-## Getting Started
+## 🚦 Getting Started
 
 ### Prerequisites
+- Node.js (v18+)
+- npm (v9+)
 
-- Node.js `v18+`
-- npm `v9+`
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Dishagujar26/HireConnect-Frontend.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-### Setup
+### Configuration
+The application communicates with the backend via the API Gateway. Ensure the gateway URL is correctly configured in `src/environments/environment.ts`.
 
-```bash
-# 1. Clone the repo
-git clone https://github.com/Dishagujar26/HireConnect-Frontend.git
-
-# 2. Install dependencies
-cd HireConnect-Frontend
-npm install
-
-# 3. Start the dev server
-npm start
-```
-
-### Environment Config
-
-Point the app at your backend by editing `src/environments/environment.ts`:
-
-```ts
-export const environment = {
-  production: false,
-  apiGatewayUrl: 'http://localhost:8080'
-};
-```
-
----
-
-## Candidate Flow
+## 📈 User Flow
 
 ```mermaid
 sequenceDiagram
     participant C as Candidate
     participant G as API Gateway
     participant S as Microservices
-
+    
     C->>G: Search Jobs
-    G-->>C: Open listings returned
+    G-->>C: Returns Open Jobs
     C->>G: Apply to Job
-    G->>S: Create Application record
-    S-->>G: 201 Created
-    G-->>C: Toast — Applied Successfully
+    G->>S: Create Application
+    S-->>G: Application Success
+    G-->>C: Toast: Applied Successfully
 ```
+
+## 🤝 Contribution
+
+This project is developed and maintained by **Adarsh Mishra**.
 
 ---
 
-## Project Structure (overview)
-
-```
-src/
-├── app/
-│   ├── auth/           # Login, registration, OAuth
-│   ├── recruiter/      # Recruiter dashboard & tools
-│   ├── candidate/      # Candidate search & profile
-│   ├── shared/         # Reusable components & services
-│   └── core/           # Guards, interceptors, models
-├── environments/
-│   ├── environment.ts
-│   └── environment.prod.ts
-└── assets/
-```
-
----
-
-## Contributions
-
-This project is built and maintained by **Adarsh Mishra**.  
-Found a bug or have a suggestion? Open an issue or reach out directly.
-
----
-
-*© 2026 HireConnect. All rights reserved.*
+© 2024 HireConnect. All rights reserved.

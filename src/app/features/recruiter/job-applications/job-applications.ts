@@ -23,7 +23,7 @@ export class RecruiterJobApplicationsComponent implements OnInit {
   applications: RecruiterJobApplicationResponse[] = [];
   isLoading = false;
 
-  // [Disha Gujar] : Track which candidateId is currently being downloaded
+  // [Adarsh Mishra] : Track which candidateId is currently being downloaded
   downloadingResumeFor: number | null = null;
   updatingStatusFor = new Set<number>();
   sendingMessageFor = new Set<number>();
@@ -90,10 +90,10 @@ export class RecruiterJobApplicationsComponent implements OnInit {
     });
   }
 
-  // [Disha Gujar] : Resume Download Operations ────────────────────────────────────────
+  // [Adarsh Mishra] : Resume Download Operations ────────────────────────────────
 
   downloadResume(candidateId: number): void {
-    if (this.downloadingResumeFor === candidateId) return; // [Disha Gujar] : prevent double-click
+    if (this.downloadingResumeFor === candidateId) return; // [Adarsh Mishra] : prevent double-click
 
     this.downloadingResumeFor = candidateId;
 

@@ -17,14 +17,14 @@ export class ProfileService {
 
   constructor(private http: HttpClient) {}
 
-  // [Disha Gujar] : Profile Operations
+  // [Adarsh Mishra] : Profile Operations
 
   getMyProfile() {
     return this.http.get<any>(`${this.baseUrl}/me`);
   }
 
-  // [Disha Gujar] : Create a brand-new profile (POST /api/profiles).
-  // [Disha Gujar] : Used on first save for users who registered but never created a profile.
+  // [Adarsh Mishra] : Create a brand-new profile (POST /api/profiles).
+  // [Adarsh Mishra] : Used on first save for users who registered but never created a profile.
   createProfile(data: any) {
     return this.http.post<any>(this.baseUrl, data);
   }
@@ -33,10 +33,10 @@ export class ProfileService {
     return this.http.put<any>(`${this.baseUrl}/me`, data);
   }
 
-  // [Disha Gujar] : Resume — Candidate Operations
+  // [Adarsh Mishra] : Resume — Candidate Operations
 
-  // [Disha Gujar] : Upload a resume file (PDF) for the authenticated candidate.
-  // [Disha Gujar] : Backend: POST /api/profiles/resume/upload (multipart/form-data)
+  // [Adarsh Mishra] : Upload a resume file (PDF) for the authenticated candidate.
+  // [Adarsh Mishra] : Backend: POST /api/profiles/resume/upload (multipart/form-data)
   uploadResume(file: File): Observable<string> {
     const formData = new FormData();
     formData.append('file', file, file.name);
@@ -45,19 +45,19 @@ export class ProfileService {
     });
   }
 
-  // [Disha Gujar] : Download the candidate's own resume as a binary blob.
-  // [Disha Gujar] : Backend: GET /api/profiles/resume/my
+  // [Adarsh Mishra] : Download the candidate's own resume as a binary blob.
+  // [Adarsh Mishra] : Backend: GET /api/profiles/resume/my
   downloadMyResume(): Observable<Blob> {
     return this.http.get(`${this.baseUrl}/resume/my`, {
       responseType: 'blob'
     });
   }
 
-  // [Disha Gujar] : Resume — Recruiter Operations
+  // [Adarsh Mishra] : Resume — Recruiter Operations
 
-  // [Disha Gujar] : Download a specific candidate's resume as a recruiter.
-  // [Disha Gujar] : Requires the recruiter to own the job the candidate applied for.
-  // [Disha Gujar] : Backend: GET /api/profiles/resume/recruiter/{candidateId}/{jobId}
+  // [Adarsh Mishra] : Download a specific candidate's resume as a recruiter.
+  // [Adarsh Mishra] : Requires the recruiter to own the job the candidate applied for.
+  // [Adarsh Mishra] : Backend: GET /api/profiles/resume/recruiter/{candidateId}/{jobId}
   downloadResumeForRecruiter(candidateId: number, jobId: number): Observable<Blob> {
     return this.http.get(
       `${this.baseUrl}/resume/recruiter/${candidateId}/${jobId}`,

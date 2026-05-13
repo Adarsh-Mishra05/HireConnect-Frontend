@@ -18,11 +18,11 @@ export class ProfileComponent implements OnInit {
 
   isEditMode = false;
   isLoading = false;
-  profileExists = true;   // [Disha Gujar] : false for newly registered users with no profile yet
+  profileExists = true;   // [Adarsh Mishra] : false for newly registered users with no profile yet
   userRole = '';
   userEmail = '';
 
-  // [Disha Gujar] : Resume Upload State ───────────────────────────────────────────────────
+  // [Adarsh Mishra] : Resume Upload State ───────────────────────────────────────────────────
   selectedResumeFile: File | null = null;
   isUploadingResume = false;
   isDownloadingResume = false;
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
       error: (err) => {
         this.isLoading = false;
         if (err?.status === 404) {
-          // [Disha Gujar] : New user — no profile yet, start in edit mode automatically
+          // [Adarsh Mishra] : New user — no profile yet, start in edit mode automatically
           this.profileExists = false;
           this.profile = this.buildEditableProfile({});
           this.editableProfile = this.buildEditableProfile({});
@@ -134,7 +134,7 @@ export class ProfileComponent implements OnInit {
       payload.socialLinks = this.editableProfile.socialLinks || [];
     }
 
-    // [Disha Gujar] : Choose POST (create) or PUT (update) based on whether profile already exists
+    // [Adarsh Mishra] : Choose POST (create) or PUT (update) based on whether profile already exists
     const request$ = this.profileExists
       ? this.profileService.updateProfile(payload)
       : this.profileService.createProfile(payload);
@@ -160,7 +160,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // [Disha Gujar] : Skills Section ────────────────────────────────────────────────────────────────
+  // [Adarsh Mishra] : Skills Section ────────────────────────────────────────────────────────────────
 
   addSkill(): void {
     this.editableProfile.skills = this.editableProfile.skills || [];
@@ -171,7 +171,7 @@ export class ProfileComponent implements OnInit {
     this.editableProfile.skills.splice(index, 1);
   }
 
-  // [Disha Gujar] : Education Section ────────────────────────────────────────────────────────────
+  // [Adarsh Mishra] : Education Section ────────────────────────────────────────────────────────────
 
   addEducation(): void {
     this.editableProfile.educations = this.editableProfile.educations || [];
@@ -185,7 +185,7 @@ export class ProfileComponent implements OnInit {
     this.editableProfile.educations.splice(index, 1);
   }
 
-  // [Disha Gujar] : Experience Section ───────────────────────────────────────────────────────────
+  // [Adarsh Mishra] : Experience Section ───────────────────────────────────────────────────────────
 
   addExperience(): void {
     this.editableProfile.experiences = this.editableProfile.experiences || [];
@@ -199,7 +199,7 @@ export class ProfileComponent implements OnInit {
     this.editableProfile.experiences.splice(index, 1);
   }
 
-  // [Disha Gujar] : Social Links Section ──────────────────────────────────────────────────────────
+  // [Adarsh Mishra] : Social Links Section ──────────────────────────────────────────────────────────
 
   addSocialLink(): void {
     this.editableProfile.socialLinks = this.editableProfile.socialLinks || [];
@@ -210,7 +210,7 @@ export class ProfileComponent implements OnInit {
     this.editableProfile.socialLinks.splice(index, 1);
   }
 
-  // [Disha Gujar] : Resume Upload Operations ─────────────────────────────────────────────────────────
+  // [Adarsh Mishra] : Resume Upload Operations ─────────────────────────────────────────────────────────
 
   onResumeFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -218,7 +218,7 @@ export class ProfileComponent implements OnInit {
 
     if (!file) return;
 
-    // [Disha Gujar] : Backend only accepts PDF
+    // [Adarsh Mishra] : Backend only accepts PDF
     if (file.type !== 'application/pdf') {
       this.resumeUploadError = 'Only PDF files are allowed. Please select a PDF document.';
       this.selectedResumeFile = null;
@@ -250,7 +250,7 @@ export class ProfileComponent implements OnInit {
         this.resumeUploadSuccess = message || 'Resume uploaded successfully!';
         this.toastService.show('Resume uploaded successfully', 'success');
         this.selectedResumeFile = null;
-        // [Disha Gujar] : Reload profile so resume info refreshes
+        // [Adarsh Mishra] : Reload profile so resume info refreshes
         this.loadProfile();
       },
       error: (err) => {
@@ -261,7 +261,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // [Disha Gujar] : Resume Download (Candidate) ───────────────────────────────────────────
+  // [Adarsh Mishra] : Resume Download (Candidate) ───────────────────────────────────────────
 
   downloadMyResume(): void {
     this.isDownloadingResume = true;
@@ -280,7 +280,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  // [Disha Gujar] : Helper — Trigger browser download from Blob ───────────────────────────
+  // [Adarsh Mishra] : Helper — Trigger browser download from Blob ───────────────────────────
 
   private triggerBlobDownload(blob: Blob, fileName: string): void {
     const url = window.URL.createObjectURL(blob);
@@ -291,7 +291,7 @@ export class ProfileComponent implements OnInit {
     window.URL.revokeObjectURL(url);
   }
 
-  // [Disha Gujar] : File Size Formatter ───────────────────────────────────────────────────
+  // [Adarsh Mishra] : File Size Formatter ───────────────────────────────────────────────────
 
   formatFileSize(bytes: number): string {
     if (!bytes || bytes === 0) return '';
@@ -300,7 +300,7 @@ export class ProfileComponent implements OnInit {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   }
 
-  // [Disha Gujar] : Computed getters ──────────────────────────────────────────────────────
+  // [Adarsh Mishra] : Computed getters ──────────────────────────────────────────────────────
 
   get hasUploadedResume(): boolean {
     return !!(this.profile?.resume?.fileName);

@@ -1,19 +1,91 @@
 /* ═══════════════════════════════════════════════
-   HireConnect — Candidate Dashboard
+   HireConnect — Candidate Dashboard (Glassmorphism)
 ════════════════════════════════════════════════ */
+
+.dashboard-wrapper {
+  position: relative;
+  min-height: calc(100vh - 80px); /* Adjust based on navbar height */
+  overflow: hidden;
+  padding: 24px;
+  background-color: #f8fafc;
+  z-index: 1;
+}
+
+/* ── Animated Background Shapes ──────────────── */
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  animation: float 20s infinite alternate;
+}
+
+.shape-1 {
+  top: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: rgba(99, 102, 241, 0.25); /* Indigo */
+}
+
+.shape-2 {
+  bottom: -50px;
+  right: -50px;
+  width: 400px;
+  height: 400px;
+  background: rgba(236, 72, 153, 0.2); /* Pink */
+  animation-delay: -5s;
+}
+
+.shape-3 {
+  top: 40%;
+  left: 30%;
+  width: 300px;
+  height: 300px;
+  background: rgba(16, 185, 129, 0.15); /* Emerald */
+  animation-duration: 25s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 50px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.9); }
+}
 
 .dashboard {
   display: flex;
   flex-direction: column;
   gap: 28px;
   max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Glassmorphism Utilities ─────────────────── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 /* ── Welcome Banner ──────────────────────────── */
 .welcome-banner {
-  background: linear-gradient(135deg, #0f1f6b 0%, var(--primary) 60%, #4f46e5 100%);
+  /* Overriding the previous solid gradient with a glass panel + soft colorful overlay */
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.8) 0%, rgba(59, 130, 246, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-xl);
-  padding: 32px 36px;
+  padding: 36px 40px;
   color: white;
   display: flex;
   align-items: center;
@@ -22,138 +94,147 @@
   flex-wrap: wrap;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.2);
 }
 
 .welcome-banner::after {
   content: '';
   position: absolute;
-  right: -40px;
-  top: -40px;
-  width: 220px;
-  height: 220px;
+  right: -50px;
+  top: -50px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.06);
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .welcome-eyebrow {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.72);
-  margin-bottom: 6px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 8px;
 }
 
 .welcome-banner h1 {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
-  margin-bottom: 8px;
-  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .welcome-sub {
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.82);
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.9);
   line-height: 1.6;
-  max-width: 500px;
+  max-width: 520px;
 }
 
 .welcome-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 10px 20px;
+  gap: 8px;
+  padding: 12px 24px;
   background: white;
   color: var(--primary);
-  border-radius: var(--radius-md);
-  font-size: 13.5px;
+  border-radius: var(--radius-lg);
+  font-size: 14px;
   font-weight: 700;
   text-decoration: none;
-  transition: opacity 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .btn-primary:hover {
-  opacity: 0.92;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
-  border: 1.5px solid rgba(255,255,255,0.4);
+  padding: 12px 24px;
+  border: 1.5px solid rgba(255,255,255,0.5);
   color: white;
-  border-radius: var(--radius-md);
-  font-size: 13.5px;
+  border-radius: var(--radius-lg);
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  background: transparent;
-  transition: background 0.2s;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
 .btn-outline:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.2);
+  border-color: white;
 }
 
 /* ── Section Title ───────────────────────────── */
 .section-title {
-  font-size: 17px;
-  font-weight: 700;
-  color: #1e293b; /* Dark color for visibility on light backgrounds */
-  margin-bottom: 14px;
-  letter-spacing: -0.2px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
 }
 
 /* ── Quick Nav Grid ──────────────────────────── */
 .quick-nav-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 16px;
 }
 
 .qnav-card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 18px 20px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: var(--radius-xl);
   text-decoration: none;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
-  box-shadow: var(--shadow-xs);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .qnav-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.1);
+  transform: translateY(-4px) scale(1.01);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .qnav-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-.qnav-blue   { background: #eff6ff; color: #2563eb; }
-.qnav-orange { background: #fff7ed; color: #ea580c; }
-.qnav-green  { background: #f0fdf4; color: #16a34a; }
-.qnav-purple { background: #faf5ff; color: #7c3aed; }
-.qnav-indigo { background: #eef2ff; color: #4f46e5; }
+.qnav-card:hover .qnav-icon {
+  transform: scale(1.1);
+}
+
+.qnav-blue   { background: linear-gradient(135deg, #eff6ff, #dbeafe); color: #2563eb; }
+.qnav-orange { background: linear-gradient(135deg, #fff7ed, #ffedd5); color: #ea580c; }
+.qnav-green  { background: linear-gradient(135deg, #f0fdf4, #dcfce7); color: #16a34a; }
+.qnav-purple { background: linear-gradient(135deg, #faf5ff, #f3e8ff); color: #7c3aed; }
+.qnav-indigo { background: linear-gradient(135deg, #eef2ff, #e0e7ff); color: #4f46e5; }
 
 .qnav-content {
   flex: 1;
@@ -161,80 +242,87 @@
 }
 
 .qnav-content h3 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
-  color: #1e293b; /* Dark color for visibility on white background */
-  margin-bottom: 3px;
+  color: #0f172a;
+  margin-bottom: 4px;
 }
 
 .qnav-content p {
-  font-size: 12px;
-  color: #64748b; /* Darker gray for secondary text */
+  font-size: 13px;
+  color: #64748b;
   line-height: 1.5;
 }
 
 .qnav-arrow {
-  color: var(--text-muted);
-  font-size: 16px;
+  color: #cbd5e1;
+  font-size: 18px;
   flex-shrink: 0;
-  transition: color 0.2s, transform 0.15s;
+  transition: all 0.3s ease;
+  opacity: 0.5;
 }
 
 .qnav-card:hover .qnav-arrow {
   color: var(--primary);
-  transform: translateX(3px);
+  transform: translateX(6px);
+  opacity: 1;
 }
 
 /* ── Tips Section ────────────────────────────── */
 .tips-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 16px;
 }
 
 .tip-card {
   display: flex;
-  gap: 14px;
-  padding: 20px 22px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  border-left: 3px solid var(--primary);
-  box-shadow: var(--shadow-xs);
-  transition: box-shadow 0.2s, transform 0.15s;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: var(--radius-xl);
+  border-left: 4px solid var(--primary);
+  transition: all 0.3s ease;
 }
 
 .tip-card:hover {
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .tip-icon {
-  font-size: 22px;
+  font-size: 24px;
   flex-shrink: 0;
-  margin-top: 2px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 .tip-card h4 {
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 700;
-  color: #1e293b; /* Dark color for visibility on white background */
-  margin-bottom: 5px;
+  color: #0f172a;
+  margin-bottom: 6px;
 }
 
 .tip-card p {
-  font-size: 12.5px;
-  color: #64748b; /* Darker gray for secondary text */
+  font-size: 13.5px;
+  color: #475569;
   line-height: 1.6;
 }
 
 .tip-card a {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
+  transition: color 0.2s;
 }
 
 .tip-card a:hover {
+  color: #4338ca;
   text-decoration: underline;
 }
 
@@ -248,10 +336,10 @@
   .welcome-banner {
     flex-direction: column;
     align-items: flex-start;
-    padding: 24px 22px;
+    padding: 28px 24px;
   }
 
   .welcome-banner h1 {
-    font-size: 22px;
+    font-size: 24px;
   }
 }

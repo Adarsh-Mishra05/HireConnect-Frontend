@@ -40,14 +40,6 @@
     </div>
   </section>
 
-  <section class="summary-card" *ngIf="subscription">
-    <span class="summary-label">Current Subscription</span>
-    <strong>{{ subscription.plan }}</strong>
-    <span class="page-subtitle">
-      Status: {{ subscription.status }} | Valid till {{ subscription.endDate | date:'mediumDate' }}
-    </span>
-  </section>
-
   <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
 
   <div class="loading-state" *ngIf="isLoading">

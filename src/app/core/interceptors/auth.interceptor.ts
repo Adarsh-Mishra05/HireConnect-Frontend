@@ -57,10 +57,14 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
           switchMap((response) => {
             console.info('Token refreshed successfully.');
             isRefreshing = false;
-            authStorage.setAccessToken(response.accessToken);
-            if (response.refreshToken) {
-              authStorage.setRefreshToken(response.refreshToken);
-            }
+            authStorage.saveSession({
+              accessToken: response.accessToken,
+              refreshToken: response.refreshToken || refreshToken,
+              email: response.email || authStorage.getUserEmail() || '',
+              role: response.role || authStorage.getUserRole() || '',
+              userId: Number(response.userId || authStorage.getUserId() || 0),
+              fullName: response.fullName || authStorage.getUserFullName() || undefined
+            });
             refreshTokenSubject.next(response.accessToken);
 
             return next(req.clone({
@@ -93,4 +97,4 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       }
     })
   );
-};
+};

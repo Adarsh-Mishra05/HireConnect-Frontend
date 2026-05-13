@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaymentResponse, PaymentService } from '../../../core/services/payment.service';
-import { InvoiceResponse, SubscriptionResponse, SubscriptionService } from '../../../core/services/subscription.service';
+import { FormsModule } from '@angular/forms';
+import { InvoiceResponse, SubscriptionService } from '../../../core/services/subscription.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { AuthStorageService } from '../../../core/services/auth-storage.service';
 import { catchError } from 'rxjs/operators';
 import { forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'app-recruiter-billing',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './recruiter-billing.html',
   styleUrl: './recruiter-billing.css'
 })
 export class RecruiterBillingComponent implements OnInit {
   payments: PaymentResponse[] = [];
   invoices: InvoiceResponse[] = [];
-  subscription: SubscriptionResponse | null = null;
   isLoading = false;
   errorMessage = '';
 
   constructor(
     private paymentService: PaymentService,
     private subscriptionService: SubscriptionService,
+    private authStorage: AuthStorageService,
     private toastService: ToastService
   ) {}
 
@@ -33,15 +35,16 @@ export class RecruiterBillingComponent implements OnInit {
   loadPayments(): void {
     this.isLoading = true;
     this.errorMessage = '';
+    const isRecruiter = this.authStorage.getUserRole() === 'RECRUITER';
 
     forkJoin({
       payments: this.paymentService.getMyPayments().pipe(catchError(() => of([]))),
-      subscription: this.subscriptionService.getMySubscription().pipe(catchError(() => of(null))),
-      invoices: this.subscriptionService.getMyInvoices().pipe(catchError(() => of([])))
+      invoices: isRecruiter
+        ? this.subscriptionService.getMyInvoices().pipe(catchError(() => of([])))
+        : of([])
     }).subscribe({
-      next: ({ payments, subscription, invoices }) => {
+      next: ({ payments, invoices }) => {
         this.payments = Array.isArray(payments) ? payments : [];
-        this.subscription = subscription;
         this.invoices = Array.isArray(invoices) ? invoices : [];
         this.isLoading = false;
       },

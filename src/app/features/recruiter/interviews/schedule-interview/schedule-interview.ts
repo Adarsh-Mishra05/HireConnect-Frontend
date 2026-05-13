@@ -49,13 +49,13 @@ export class ScheduleInterviewComponent implements OnInit {
     this.errorMessage = '';
 
     if (form.invalid) {
-      // [Disha Gujar] : Form validation fallback logic
+      // [Adarsh Mishra] : Form validation fallback logic
       this.toastService.show('Please fill all required fields correctly','error');
       return;
     }
 
     if (!this.formData.scheduledAt) {
-      // [Disha Gujar] : Date selection validation fallback logic
+      // [Adarsh Mishra] : Date selection validation fallback logic
       this.toastService.show('Please choose interview date and time','error');
       return;
     }

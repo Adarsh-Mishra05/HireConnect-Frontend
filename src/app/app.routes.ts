@@ -28,6 +28,7 @@ import { AdminLoginComponent } from './features/auth/admin-login/admin-login';
 import { LandingComponent } from './features/landing/landing.component';
 import { adminGuard } from './core/guards/admin.guard';
 import { PublicJobsComponent } from './features/public-jobs/public-jobs.component';
+import { recruiterGuard } from './core/guards/recruiter.guard';
 export const routes: Routes = [
   { path: '', component: LandingComponent },
 
@@ -48,20 +49,20 @@ export const routes: Routes = [
       { path: 'jobs', component: CandidateJobsComponent },
       { path: 'jobs/:jobId', component: JobDetailsComponent },
 
-      { path: 'recruiter/dashboard', component: RecruiterDashboard },
-      { path: 'recruiter/jobs', component: RecruiterJobsComponent },
-      { path: 'recruiter/jobs/create', component: CreateJobComponent },
-      { path: 'recruiter/jobs/:jobId/edit', component: EditJobComponent },
-      { path: 'recruiter/jobs/:jobId/applications', component: RecruiterJobApplicationsComponent },
-      { path: 'recruiter/applications', component: RecruiterApplicationsComponent },
-      { path: 'recruiter/interviews', component: RecruiterInterviewsComponent },
-      { path: 'recruiter/interviews/schedule/:applicationId', component: ScheduleInterviewComponent },
+      { path: 'recruiter/dashboard', component: RecruiterDashboard, canActivate: [recruiterGuard] },
+      { path: 'recruiter/jobs', component: RecruiterJobsComponent, canActivate: [recruiterGuard] },
+      { path: 'recruiter/jobs/create', component: CreateJobComponent, canActivate: [recruiterGuard] },
+      { path: 'recruiter/jobs/:jobId/edit', component: EditJobComponent, canActivate: [recruiterGuard] },
+      { path: 'recruiter/jobs/:jobId/applications', component: RecruiterJobApplicationsComponent, canActivate: [recruiterGuard] },
+      { path: 'recruiter/applications', component: RecruiterApplicationsComponent, canActivate: [recruiterGuard] },
+      { path: 'recruiter/interviews', component: RecruiterInterviewsComponent, canActivate: [recruiterGuard] },
+      { path: 'recruiter/interviews/schedule/:applicationId', component: ScheduleInterviewComponent, canActivate: [recruiterGuard] },
 
       { path: 'profile', component: ProfileComponent },
       { path: 'candidate/applications', component: CandidateApplicationsComponent },
       { path: 'notifications', component: NotificationsComponent },
       { path: 'candidate/interviews', component: CandidateInterviewsComponent },
-      { path: 'recruiter/billing', component: RecruiterBillingComponent },
+      { path: 'recruiter/billing', component: RecruiterBillingComponent, canActivate: [recruiterGuard] },
       { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [adminGuard] },
     ]
   },

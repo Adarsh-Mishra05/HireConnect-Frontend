@@ -21,7 +21,7 @@
   animation: slideDown 0.3s ease;
 }
 
-/* [Disha Gujar] : Toast Type Variations */
+/* [Adarsh Mishra] : Toast Type Variations */
 
 .toast.success {
   background: #ecfdf5;
@@ -41,7 +41,7 @@
   border: 1px solid #bfdbfe;
 }
 
-/* [Disha Gujar] : Animation Definitions */
+/* [Adarsh Mishra] : Animation Definitions */
 
 @keyframes slideDown {
   from {

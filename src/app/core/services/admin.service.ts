@@ -99,7 +99,11 @@ export class AdminService {
 
   updateUserStatus(userId: number, active: boolean): Observable<AdminUser> {
     const params = new HttpParams().set('active', String(active));
-    return this.http.patch<AdminUser>(`${this.usersBaseUrl}/${userId}/status`, null, { params });
+    return this.http.patch<AdminUser>(
+      `${this.usersBaseUrl}/${userId}/status`,
+      { active },
+      { params }
+    );
   }
 
   getAllJobs(): Observable<AdminJob[]> {

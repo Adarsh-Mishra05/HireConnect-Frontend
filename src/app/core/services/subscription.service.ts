@@ -18,9 +18,23 @@ export interface InvoiceResponse {
   subscriptionId: number;
   recruiterId: number;
   amount: number;
-  paymentMode: 'UPI' | 'CARD' | 'NET_BANKING' | 'WALLET';
+  paymentMode: 'UPI' | 'CARD' | 'WALLET';
   transactionId: string;
   paymentDate: string;
+}
+
+export type PlanTier = 'FREE' | 'PROFESSIONAL' | 'ENTERPRISE';
+export type PaymentMode = 'UPI' | 'CARD' | 'WALLET';
+
+export interface SubscribeRequest {
+  plan: PlanTier;
+  paymentMode?: PaymentMode;
+  transactionId?: string;
+}
+
+export interface RenewSubscriptionRequest {
+  paymentMode: PaymentMode;
+  transactionId: string;
 }
 
 @Injectable({
@@ -37,5 +51,17 @@ export class SubscriptionService {
 
   getMyInvoices(): Observable<InvoiceResponse[]> {
     return this.http.get<InvoiceResponse[]>(`${this.baseUrl}/invoices/me`);
+  }
+
+  subscribe(request: SubscribeRequest): Observable<SubscriptionResponse> {
+    return this.http.post<SubscriptionResponse>(`${this.baseUrl}/subscribe`, request);
+  }
+
+  renew(request: RenewSubscriptionRequest): Observable<SubscriptionResponse> {
+    return this.http.put<SubscriptionResponse>(`${this.baseUrl}/renew`, request);
+  }
+
+  cancel(): Observable<SubscriptionResponse> {
+    return this.http.put<SubscriptionResponse>(`${this.baseUrl}/cancel`, {});
   }
 }
