@@ -13,16 +13,16 @@
       </div>
       
       <nav class="nav-links">
-        <a (click)="goToJobs()" class="nav-link" style="cursor: pointer;">Jobs</a>
-        <a href="#how-it-works" class="nav-link">How It Works</a>
-        <a href="#about" class="nav-link">About</a>
+        <a (click)="goToJobs()" class="nav-link short-link" style="cursor: pointer;">Jobs</a>
+        <a href="#how-it-works" class="nav-link hide-mobile">How It Works</a>
+        <a href="#about" class="nav-link hide-mobile">About</a>
       </nav>
 
       <div class="nav-actions">
-        <a *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-outline">Sign In</a>
-        <a *ngIf="!isLoggedIn" routerLink="/register" class="btn btn-primary">Get Started</a>
-        <a *ngIf="isLoggedIn" class="btn btn-primary" (click)="goToStart()">Go to Dashboard</a>
-        <a routerLink="/admin/login" class="btn btn-admin">
+        <a *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-outline">Login</a>
+        <a *ngIf="!isLoggedIn" routerLink="/register" class="btn btn-primary">Sign Up</a>
+        <a *ngIf="isLoggedIn" class="btn btn-primary" (click)="goToStart()">Dashboard</a>
+        <a routerLink="/admin/login" class="btn btn-admin hide-mobile">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
           </svg>

@@ -1,36 +1,31 @@
-<div class="dashboard-wrapper dark-theme">
-  <!-- Decorative Background Grid and Glow -->
-  <div class="bg-grid"></div>
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-
+<div class="dashboard-wrapper">
   <div class="dashboard">
 
     <!-- ── Welcome Banner ───────────────────────────── -->
-    <section class="welcome-banner glass-panel-dark">
+    <section class="welcome-banner glass-panel">
       <div class="welcome-text">
         <p class="welcome-eyebrow">Recruiter Workspace</p>
         <h1>Manage hiring with speed & structure 🎯</h1>
         <p class="welcome-sub">Post jobs, review candidates, schedule interviews, and track your entire hiring pipeline from one place.</p>
       </div>
       <div class="welcome-actions">
-        <a routerLink="/recruiter/jobs/create" class="btn-neon">
+        <a routerLink="/recruiter/jobs/create" class="btn-primary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
             <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
           </svg>
           Post a Job
         </a>
-        <a routerLink="/recruiter/applications" class="btn-outline-dark">Review Applications</a>
+        <a routerLink="/recruiter/applications" class="btn-outline">Review Applications</a>
       </div>
     </section>
 
     <!-- ── Quick Navigation Cards ───────────────────── -->
     <section class="quick-nav">
-      <h2 class="section-title text-glow">Command Center</h2>
+      <h2 class="section-title">Command Center</h2>
       <div class="quick-nav-grid">
 
-        <a routerLink="/recruiter/jobs" class="qnav-card glass-card-dark">
-          <div class="qnav-icon icon-blue-neon">
+        <a routerLink="/recruiter/jobs" class="qnav-card glass-card">
+          <div class="qnav-icon icon-blue">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
             </svg>
@@ -42,8 +37,8 @@
           <span class="qnav-arrow">→</span>
         </a>
 
-        <a routerLink="/recruiter/applications" class="qnav-card glass-card-dark">
-          <div class="qnav-icon icon-orange-neon">
+        <a routerLink="/recruiter/applications" class="qnav-card glass-card">
+          <div class="qnav-icon icon-orange">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -56,8 +51,8 @@
           <span class="qnav-arrow">→</span>
         </a>
 
-        <a routerLink="/recruiter/interviews" class="qnav-card glass-card-dark">
-          <div class="qnav-icon icon-green-neon">
+        <a routerLink="/recruiter/interviews" class="qnav-card glass-card">
+          <div class="qnav-icon icon-green">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <rect x="3" y="4" width="18" height="18" rx="2"/>
               <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
@@ -70,8 +65,8 @@
           <span class="qnav-arrow">→</span>
         </a>
 
-        <a routerLink="/recruiter/billing" class="qnav-card glass-card-dark">
-          <div class="qnav-icon icon-indigo-neon">
+        <a routerLink="/recruiter/billing" class="qnav-card glass-card">
+          <div class="qnav-icon icon-indigo">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
             </svg>
@@ -83,8 +78,8 @@
           <span class="qnav-arrow">→</span>
         </a>
 
-        <a routerLink="/profile" class="qnav-card glass-card-dark">
-          <div class="qnav-icon icon-purple-neon">
+        <a routerLink="/profile" class="qnav-card glass-card">
+          <div class="qnav-icon icon-purple">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
             </svg>
@@ -96,8 +91,8 @@
           <span class="qnav-arrow">→</span>
         </a>
 
-        <a routerLink="/recruiter/jobs/create" class="qnav-card glass-card-dark qnav-cta-dark">
-          <div class="qnav-icon icon-cta-neon">
+        <a routerLink="/recruiter/jobs/create" class="qnav-card glass-card qnav-cta">
+          <div class="qnav-icon icon-cta">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
               <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
             </svg>
@@ -114,15 +109,15 @@
 
     <!-- ── Tips ─────────────────────────────────────── -->
     <section class="tips-section">
-      <div class="tip-card glass-card-dark">
-        <span class="tip-icon pulse-glow">⭐</span>
+      <div class="tip-card glass-card">
+        <span class="tip-icon">⭐</span>
         <div>
           <h4>Promote your jobs</h4>
-          <p>Featured jobs appear at the top of candidate searches, getting 5x more applications. <a routerLink="/recruiter/jobs" class="link-neon">Promote now →</a></p>
+          <p>Featured jobs appear at the top of candidate searches, getting 5x more applications. <a routerLink="/recruiter/jobs" class="link-primary">Promote now →</a></p>
         </div>
       </div>
-      <div class="tip-card glass-card-dark">
-        <span class="tip-icon pulse-glow">⚡</span>
+      <div class="tip-card glass-card">
+        <span class="tip-icon">⚡</span>
         <div>
           <h4>Respond faster</h4>
           <p>Candidates who hear back within 24 hours are 3x more likely to accept offers. Review pending applications today.</p>

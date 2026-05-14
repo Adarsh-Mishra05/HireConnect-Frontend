@@ -8,7 +8,7 @@
 .app-shell {
   min-height: 100vh;
   display: flex;
-  background: #f1f5f9; /* Cool soft gray */
+  background: #f8faf2; /* Subtle green-white */
   font-family: 'Inter', sans-serif;
 }
 
@@ -283,12 +283,12 @@
 .glass-topbar {
   margin: 16px 24px;
   height: 64px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(236, 253, 245, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.18);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -307,8 +307,8 @@
   align-items: center;
   gap: 10px;
   height: 40px;
-  background: rgba(241, 245, 249, 0.7);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: rgba(236, 253, 245, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.14);
   border-radius: 20px;
   padding: 0 16px;
   transition: all 0.2s ease;
@@ -612,5 +612,64 @@
   .glass-topbar {
     margin: 12px;
     border-radius: 12px;
+    position: relative;
+  }
+
+  .page-content {
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding: 8px 12px 20px;
+    padding-top: 20px;
+  }
+
+  .glass-topbar {
+    margin: 8px 10px;
+    padding: 8px 10px;
+    position: relative;
+    min-height: 48px;
+    height: auto;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .topbar-left {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+  }
+
+  .search-wrap {
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 16px;
+    gap: 8px;
+  }
+
+  .search-wrap input {
+    font-size: 13px;
+  }
+
+  .topbar-icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .notif-panel {
+    width: calc(100vw - 32px);
+    right: 16px;
+    top: 80px;
   }
 }
