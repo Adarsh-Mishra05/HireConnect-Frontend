@@ -1184,8 +1184,12 @@
     padding: 1.25rem;
   }
 
-  .features-grid {
+  .features-grid,
+  .about-stats-grid,
+  .feature-list,
+  .footer-content {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .steps-container {

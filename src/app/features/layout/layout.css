@@ -387,6 +387,10 @@
   border: 2px solid white;
 }
 
+.mobile-logout-btn {
+  display: none;
+}
+
 /* ── Page Content ────────────────────────────── */
 .page-content {
   flex: 1;
@@ -617,6 +621,10 @@
 
   .page-content {
     padding-top: 20px;
+  }
+
+  .mobile-logout-btn {
+    display: flex;
   }
 }
 
