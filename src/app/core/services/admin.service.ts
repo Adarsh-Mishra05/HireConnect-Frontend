@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -85,11 +86,11 @@ export interface AdminSubscriptionSummary {
   providedIn: 'root'
 })
 export class AdminService {
-  private usersBaseUrl = 'http://localhost:8080/api/admin/users';
-  private jobsBaseUrl = 'http://localhost:8080/api/jobs';
-  private paymentsBaseUrl = 'http://localhost:8080/api/payments';
-  private analyticsBaseUrl = 'http://localhost:8080/api/analytics';
-  private subscriptionsBaseUrl = 'http://localhost:8080/api/subscriptions';
+  private usersBaseUrl = environment.apiBaseUrl + '/admin/users';
+  private jobsBaseUrl = environment.apiBaseUrl + '/jobs';
+  private paymentsBaseUrl = environment.apiBaseUrl + '/payments';
+  private analyticsBaseUrl = environment.apiBaseUrl + '/analytics';
+  private subscriptionsBaseUrl = environment.apiBaseUrl + '/subscriptions';
 
   constructor(private http: HttpClient) {}
 

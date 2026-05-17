@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -29,7 +30,7 @@ export interface RecruiterMessageRequest {
   providedIn: 'root'
 })
 export class NotificationService {
-  private baseUrl = 'http://localhost:8080/api/notifications';
+  private baseUrl = environment.apiBaseUrl + '/notifications';
 
   constructor(private http: HttpClient) {}
 

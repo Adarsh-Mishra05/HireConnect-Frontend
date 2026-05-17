@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -41,7 +42,7 @@ export interface RenewSubscriptionRequest {
   providedIn: 'root'
 })
 export class SubscriptionService {
-  private baseUrl = 'http://localhost:8080/api/subscriptions';
+  private baseUrl = environment.apiBaseUrl + '/subscriptions';
 
   constructor(private http: HttpClient) {}
 

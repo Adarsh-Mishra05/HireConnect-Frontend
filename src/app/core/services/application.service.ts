@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -33,7 +34,7 @@ export interface CandidateApplicationResponse {
   providedIn: 'root'
 })
 export class ApplicationService {
-  private baseUrl = 'http://localhost:8080/api/applications';
+  private baseUrl = environment.apiBaseUrl + '/applications';
 
   constructor(private http: HttpClient) {}
 

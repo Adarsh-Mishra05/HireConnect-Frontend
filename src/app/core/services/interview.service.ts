@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -40,7 +41,7 @@ export interface CandidateRescheduleRequest {
   providedIn: 'root'
 })
 export class InterviewService {
-  private baseUrl = 'http://localhost:8080/api/interviews';
+  private baseUrl = environment.apiBaseUrl + '/interviews';
 
   constructor(private http: HttpClient) {}
 

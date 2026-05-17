@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -59,8 +60,8 @@ export interface ApplicationResponse {
   providedIn: 'root'
 })
 export class JobService {
-  private jobsBaseUrl = 'http://localhost:8080/api/jobs';
-  private applicationsBaseUrl = 'http://localhost:8080/api/applications';
+  private jobsBaseUrl = environment.apiBaseUrl + '/jobs';
+  private applicationsBaseUrl = environment.apiBaseUrl + '/applications';
 
   constructor(private http: HttpClient) {}
 
