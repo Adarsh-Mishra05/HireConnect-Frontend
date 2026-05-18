@@ -21,7 +21,7 @@ export class OAuthSuccessComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
-      const error = params.get('error');
+      const error = params.get('error') || params.get('oauthError');
       const accessToken = params.get('accessToken');
       const refreshToken = params.get('refreshToken');
       const email = params.get('email');
