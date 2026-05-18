@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://hireconnect.duckdns.org/api',
-  authServiceBaseUrl: 'https://hireconnect.duckdns.org/api/v1/auth',
-  paymentServiceBaseUrl: 'https://hireconnect.duckdns.org/api/payments'
+  apiBaseUrl: 'http://localhost:8080/api',
+  authServiceBaseUrl: 'http://localhost:8080/api/v1/auth',
+  paymentServiceBaseUrl: 'http://localhost:8080/api/payments'
 };
